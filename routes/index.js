@@ -1,11 +1,11 @@
 var express = require("express");
 var router = express.Router();
 const passport = require("passport");
-const localStrategy = require("passport-local");
+const localStrategy = require("passport-local"); //it allows the user to login based on their username and password
 const userModel = require("./users");
 const postModel = require("./posts");
 const storyModel = require("./story");
-passport.use(new localStrategy(userModel.authenticate()));
+passport.use(new localStrategy(userModel.authenticate())); // this allows the user to logged in the app throughout the session
 const upload = require("./multer");
 const utils = require("../utils/utils");
 
@@ -222,9 +222,9 @@ router.post("/register", function (req, res) {
     name: req.body.name,
   });
 
-  userModel.register(user, req.body.password).then(function (registereduser) {
-    passport.authenticate("local")(req, res, function () {
-      res.redirect("/profile");
+  userModel.register(user, req.body.password).then(function (registereduser) { //register making an account in insta for newUser
+    passport.authenticate("local")(req, res, function () { // processing the user to log in
+      res.redirect("/profile"); //  "/" will route the user to the profile page,logout page , login etc
     });
   });
 });
