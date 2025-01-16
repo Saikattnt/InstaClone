@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var expressSession = require('express-session');
+var expressSession = require('express-session'); //this package helped the user to logged in, in the site / to store data of the user 
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -15,12 +15,12 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(expressSession({
+app.use(expressSession({      //this code helps the user to logged in / expressionSession allows the user data to persist(holds) during the session
   resave: false,
   saveUninitialized: false,
   secret: "heyheyehhdd"
 }));
-app.use(passport.initialize());
+app.use(passport.initialize()); //passport helps in logging functionality. it also passport protected routes(url) and everything 
 app.use(passport.session());
 passport.serializeUser(usersRouter.serializeUser());
 passport.deserializeUser(usersRouter.deserializeUser());
