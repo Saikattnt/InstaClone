@@ -3,6 +3,7 @@
 <form hidden id="fileform" method="post" enctype="multipart/form-data" action="/upload">
   <input id="file" type="file" name="image">
 </form>
+<!-- This hidden form is used to upload an image. The input element allows the user to select a file, but it's hidden until triggered by a script. -->
   
 <div class="w-full min-h-screen bg-zinc-900 text-white py-5">
     <div class="flex justify-between items-center px-4">
@@ -10,10 +11,12 @@
       <h2 class="leading-none text-sm">Edit Profile</h2>
       <a class="text-sm" href="/feed"><i class="ri-home-line"></i> home</a>
     </div>
+    <!-- This section creates the top bar for the edit profile page. It includes links to the user's profile and home, along with a heading. -->
     <div class="flex flex-col items-center gap-2 mt-20">
       <div class="image w-20 h-20 bg-sky-100 rounded-full overflow-hidden">
         <img class="w-full h-full object-cover" src="/images/uploads/<%= user.picture %>" alt="">
       </div>
+      <!-- This part displays the user's profile picture and an "edit picture" button. The button will be used to trigger the file input. -->
       <button id="editbtn" class="text-blue-500 capitalize">edit picture</button>
     </div>
     <div class="gap-5 px-4 mt-10">
@@ -26,6 +29,7 @@
         <input class="w-full bg-blue-500 px-3 py-3 rounded-md mt-2" type="submit" value="Update Details">
       </form>
     </div>
+    <!-- This section creates a form for editing account details, including username, name, and bio. The form is styled and has an "Update Details" button to submit changes. -->
   </div>
 
   <script>
@@ -38,4 +42,5 @@
       document.querySelector("#fileform").submit();
     });
   </script>
+  <!-- This script adds functionality to the "edit picture" button. When the button is clicked, it triggers the hidden file input. When a file is selected, the form is submitted automatically. -->
 <% include ./partials/footer.ejs %>
